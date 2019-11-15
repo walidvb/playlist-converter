@@ -1,0 +1,18 @@
+{
+  "name": "crack-top-100",
+  "version": "1.0.0",
+  "description": "fetch bandcamp url for all tracks",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bandcamp-scraper": "^1.2.4",
+    "google-auth-library": "^5.5.1",
+    "googleapis": "^45.0.0",
+    "string-similarity": "^3.0.0",
+    "youtube-search": "^1.1.4"
+  }
+}
