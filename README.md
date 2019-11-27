@@ -2,6 +2,15 @@
 
 edit code to run bandcamp / youtube in `index.js`
 
+lists should export an array of `{artist, name}` objects:
+```
+module.exports = [
+  {
+    artist: 'hiss21292',
+    name: 'augun',
+  },
+]
+```
 ## youtube
 
 - limited to 100 queries per day(how to increase that? OAuth by user?)
