@@ -1,25 +1,31 @@
 var youtubeSearch = require('youtube-search');
 var { YOUTUBE_API_KEY } = require('./credentials.js')
-let i = 0
 let links = []
 var opts = {
-  key: '< INSERT YOUR API KEY HERE >'
+  key: YOUTUBE_API_KEY
 };
 module.exports = (list) => {
+  let i = 0
   const searchOne = (track) => {
+    console.log(`searching for ${track.name} ${track.artist}`)
     youtubeSearch(`${track.name} ${track.artist}`, opts, function (error, searchResults) {
       if (error) {
-        console.log(`==============${track.name} ${track.artist}==============`)
-        console.log("============================")
-        console.log(error.response.data);
-        console.log(`stopped at: ${i}`)
+        try{
+          console.log(`==============${track.name} ${track.artist}==============`)
+          console.log("============================")
+          console.log(error);
+        }
+        catch(err){
+          console.log(`stopped at: ${i}`)
+          console.log(JSON.stringify(links))
+          console.log(err)
+        }
         return
-      } else {
-        console.dir(searchResults[0].link)
-        links.push(searchResults[0].link)
       }
+      const match = searchResults.find(res => /video/.test(res.kind))
+      links.push(match.link)
       if (i < list.length - 1) {
-        // if(i < 3){
+      // if(i < 0){
         i++
         searchOne(list[i])
       }
